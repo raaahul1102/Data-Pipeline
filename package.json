@@ -1,0 +1,21 @@
+{
+  "name": "data-pipeline",
+  "version": "1.0.0",
+  "description": "Assignment: Data Processing Pipeline with Array and String Manipulations",
+  "main": "src/index.js",
+  "type": "module",
+  "scripts": {
+    "generate": "node src/generate.js",
+    "clean": "node src/index.js clean",
+    "clean:async": "node src/index.js clean --async",
+    "stats": "node src/index.js stats",
+    "stats:async": "node src/index.js stats --async",
+    "help": "node src/index.js --help"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC", 
+  "dependencies": {
+    "@faker-js/faker": "^10.0.0"
+  }
+}
