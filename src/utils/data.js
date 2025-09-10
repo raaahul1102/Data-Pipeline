@@ -4,9 +4,16 @@ export function isValidEmail(email) {
 }
 
 export function parseName(fullName = "") {
-  const parts = String(fullName).trim().split(/\s+/);
-  const firstName = parts[0] || "";
-  const lastName = parts.slice(1).join(" ") || "";
+  const m = String(fullName)
+    .trim()
+    .match(/^(?:([\p{L}]+\.))?\s*([\p{L}]+)(?:\s+(.*))?$/u);
+
+  if (!m) return { firstName: "", lastName: "" };
+
+  const [, title = "", coreFirst, rest = ""] = m;
+  const firstName = title ? `${title} ${coreFirst}` : coreFirst;
+  const lastName = rest.trim();
+
   return { firstName, lastName };
 }
 
@@ -14,6 +21,7 @@ export function normalizeUser(user = {}) {
   const email = String(user.email || "")
     .trim()
     .toLowerCase();
+
   const name = String(user.name || "");
   const address = String(user.address || "").trim();
 
